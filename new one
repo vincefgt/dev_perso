@@ -1,0 +1,77 @@
+//vincent fringant
+// cda /2025
+//program
+
+saisi : integer
+pass : integer = 1
+
+function read
+    saisi := integer
+end function
+
+function writeerror()
+    write "Saisir un nombre positif"
+end fucntion 
+
+function pair
+    if saisi mod 2 then
+        write "pair"
+    end if
+end function
+
+start
+read()
+for pass from 0 to 4 do
+    //si positif
+    if saisi > 0 then
+    else
+    writeerror()
+    end if
+
+    // si pair
+    pair()
+
+    //validation verif > lancement verif suivante
+    pass := pass + 1
+end for
+
+
+// SENSEO
+// faire un cafe
+tempO : integer = 50
+
+
+function temperation de l'eau
+    read temperation
+    return temparation
+end function
+
+function dosette installer
+    read dosette
+    return dosette
+end function
+
+start
+if temperature >= tempO then
+    if dossette == true
+
+// POTATOES
+x : integer
+VPANIER : integer = 3
+
+fucntion read()
+    x := read
+end fucntion
+
+start
+// connaitre les nombres de pomme de terre
+read()
+// calculer le nombre d'AR en prendre ne compter si ce un multiple de VPANIER ou non
+if x mod VPANIER == 0 then
+    result = x / VPANIER
+    else
+    result = ( x / VPANIER ) + 1
+end if
+
+write result
+end
