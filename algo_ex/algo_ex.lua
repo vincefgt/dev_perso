@@ -303,3 +303,166 @@ end if
 
 write result
 end
+
+######## algo 4.1
+nb : integer = 9
+rang : integer
+som : integer
+
+//catch user's note
+som = 0
+    for rang from 0 to nb - 1
+        read(note)
+        array[rang] = note
+        som = som + note
+        rang = rang + 1
+    end for
+
+// calcule moy
+moy = som/nb
+write("la moyenne est ",moy)
+
+########## algo 4.2
+rangtotal : integer
+type tab : array[rangtotal]
+rang : integer
+key : integer
+temp : integer
+rangtri : integer
+
+begin
+// 4.2.1 insertion sort
+for rang from 1 to rangtotal - 1
+    key = tab[rang]
+    rangtri := rang
+    while key <= tab[rangtri - 1] or rangtri >= 0 do
+        temp = tab[rangtri - 1]
+        tab[rangtri] = temp
+        tab[rangtri-1] = key
+        rangtri = rangtri - 1
+    end while
+end for
+
+// 4.2.2 bubbles sort
+rang = 0
+//key >> flag >> key : boolean
+key = true
+    while key = true do
+        key = false
+            for rang from 0 to rangtotal - 1
+                if array[rang + 1] < array[rang] then
+                    temp = array[rang + 1]
+                    array[rang + 1] = array[rang]
+                    array[rang] = temp
+                    key = true
+                end if
+            end for
+    end while
+
+// 4.3 dico
+type tab : array[rangtotal]
+rangtotal : integer
+x : integer
+
+begin
+read(x)
+do 
+    rang  = 0
+    if x <> tab[rang] then
+        rang = rang + 1
+    end if
+while x = tab[rang]
+
+// 4.4
+y : integer = 8
+x : integer = 12
+type tab : array[x][y]
+xtemp : integer
+ytemp : integer
+valref : integer = 0
+temp : integer
+
+// recherhche sur colonne
+function rechercheline(xtemp,ytemp)
+        for xtemp from 0 to x -1 do 
+            if tab[xtemp][ytemp] > temp then
+                temp := tab[xtemp][ytemp]
+            end if
+        end for 
+end function
+
+begin
+// recherche sur ligne
+for ytemp from 0 to y - 1
+    xtemp = 0
+    rechercheline(xtemp,ytemp)
+end for
+write("value max = ",temp)
+end
+
+// 5.1
+N : integer
+type tab : array[N]
+x : integer
+counter : integer = 0
+rang : integer
+valrang : integer
+tabBis : array[N]
+
+begin
+read(x)
+    counter := 0
+    for rang from 0 to N - 1 
+        if x := tab[rang] then
+            counter := counter + 1 
+        end if
+    end for
+    write(counter)
+end for
+end
+
+//5.2
+for valrang from 0 to N - 1
+    x := tab[valrang]
+    // donnée la valeur de 0 dans le tableau d'occurence sauf si une valuer diff de 0 existe ou sans valeur
+    if tabBis[valrang] <> 0 or tabBis <> "" then
+    else
+        tabBis[valrang] := 0
+    end if
+
+    // init counter à  0
+    counter := 0
+
+    for rang from 0 to N - 1 
+        if x := tab[rang] then
+            counter := counter + 1 
+        end if
+    end for
+write(counter)
+
+// depot comptage dans tableau d'occurrence
+tabBis[x] := counter 
+end for
+
+end
+
+// 6
+x : integer = 3
+y : integer
+type disq : array[x][y]
+
+disqp : integer = 3
+disqm : integer = 2
+
+
+function disqsup
+    if disq[x][y] < disq[x][y-1] then
+        disq
+
+
+begin
+read(y)
+// 1 deplacement
+
+disq[][] 
+if disq[][] 
