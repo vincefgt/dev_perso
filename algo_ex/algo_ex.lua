@@ -1,6 +1,6 @@
 # ex n°1
 //program
-N : [integer] = 0;
+Ny : [integer] = 0;
 resultat : [integer] = 0;
 
 // user's reading
@@ -16,27 +16,27 @@ end function
 
 N01----------------------------------------------------------------------------
 start
-    if N <= lireEntier() then
+    if Ny <= lireEntier() then
         resultat = resultat + 1
-        N := N + 1
+        Ny := Ny + 1
     end if
 writeEntier()
 end
 -----------------------------------------------------------------
 start
-N = 0 
-    While N = lireEntier() do
+Ny = 0 
+    While Ny = lireEntier() do
         resultat = resultat + 1
-        N := N + 1
+        Ny := Ny + 1
     end while
 writeEntier()
 end
 -----------------------------------------------------------------
 start
-    for N = 0 to lireEntier()
+    for Ny = 0 to lireEntier()
         do
             resultat = resultat + 1;
-            N := N + 1;   
+            Ny := Ny + 1;   
     end for       
 writeEntier()
 end
@@ -401,18 +401,18 @@ write("value max = ",temp)
 end
 
 // 5.1
-N : integer
-type tab : array[N]
+Ny : integer
+type tab : array[Ny]
 x : integer
 counter : integer = 0
 rang : integer
 valrang : integer
-tabBis : array[N]
+tabBis : array[Ny]
 
 begin
 read(x)
     counter := 0
-    for rang from 0 to N - 1 
+    for rang from 0 to Ny - 1 
         if x := tab[rang] then
             counter := counter + 1 
         end if
@@ -422,7 +422,7 @@ end for
 end
 
 //5.2
-for valrang from 0 to N - 1
+for valrang from 0 to Ny - 1
     x := tab[valrang]
     // donnée la valeur de 0 dans le tableau d'occurence sauf si une valuer diff de 0 existe ou sans valeur
     if tabBis[valrang] <> 0 or tabBis <> "" then
@@ -433,7 +433,7 @@ for valrang from 0 to N - 1
     // init counter à  0
     counter := 0
 
-    for rang from 0 to N - 1 
+    for rang from 0 to Ny - 1 
         if x := tab[rang] then
             counter := counter + 1 
         end if
@@ -446,23 +446,75 @@ end for
 
 end
 
-// 6
-x : integer = 3
-y : integer
+// 6 Hanoi
+
+x : integer = 3 // number of position
+y : integern // number of disq
 type disq : array[x][y]
+mem :  integer
+disqp : integer = 3 
+disqm : integer = 2 //  number of position
+tempx : integer
+tempy : integer
 
-disqp : integer = 3
-disqm : integer = 2
 
 
-function disqsup
-    if disq[x][y] < disq[x][y-1] then
-        disq
+// Nx et Ny = rang de recherche
+Ny : integer
+Nx : interger
+// Nmax = val max de la recherche
+Nmax :  integer
+// RangNx et RangNy = rang de ref
+RangNx : integer
+RangNy : integer
 
+// trouver la premier val max de la tour
+function checkvalmax(Nx, Ny, Nmax)
+    Nmax = 0
+    for Ny from RangNy + 1 to y
+    do 
+        if disq[Nx][Ny] > Nmax then
+            Nmax = disq[Nx][Ny]
+        end if
+    while Nmax <> 0 or Ny = y
+    end for
+    return Nmax
+    return Ny
+end function
+
+// deplacement vers la gauche
+function gotoright(Nx,  
+    Ny, RangNx, RangNy)
+    for Nx from x-1 to 0 //scan farest to closest position from start
+    if Nx >= 0 then
+        valref := disq[RangNx][RangNy]
+        checkvalmax(Nx, Ny, Nmax)
+        if Nmax < valref then
+            // save value to nex position
+            disq[Nx + 1][Ny] := valref
+            //redifined compared value by 0
+            disq[RangNx][RangNy] := 0 
+    end if
+end if
+
+// rechecher first val in column
+function checkvalfirst(RangNx, RangNy)
+    RangNy := 0
+    if disq[RangNx][RangNy] = 0 and RangNy >= y then
+        RangNy = RangNy + 1
+    end if
+    return RangNy
+end function
 
 begin
-read(y)
-// 1 deplacement
+do 
+    //
+    RangNx = 0
+    for RangNy from 0 to y - 1
+        checkvalfirst(RangNx, RangNy)
+        gotoright(Nx, Ny)
+        end for
+    end for
 
-disq[][] 
-if disq[][] 
+while disq[x - 1][0] <> 0
+end

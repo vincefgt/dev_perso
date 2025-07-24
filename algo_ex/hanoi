@@ -1,0 +1,20 @@
+//VAR
+// number of tour
+N : integer 
+
+//munber of position
+Pos : integer = 3
+
+source : integer
+dest : integer
+aux : integer
+disq
+
+function depl(n,A,B,C)
+    if n = 1 then
+        disq(n) : C
+    else
+        depl(n-1
+begin
+    depl(n,)
+end
