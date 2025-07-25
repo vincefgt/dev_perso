@@ -9,12 +9,16 @@ source : integer
 dest : integer
 aux : integer
 disq
+type depl(n,A,B,C)
 
-function depl(n,A,B,C)
+function depl(n,A,C)
     if n = 1 then
-        disq(n) : C
+     
     else
-        depl(n-1
+        depl(n-1, A, B)
+        depl(n-1,c,B)
+    end if
+
 begin
-    depl(n,)
+    depl(n)
 end
