@@ -160,6 +160,20 @@ public class Main {
 
         public void exo2_3(){
             Outils outils = new Outils();
+            String value = Float.toString(outils.popupEnterValue("Enter your number"));
+            System.out.println(value);
+        }
+
+        public void exo2_4(){
+
+        }
+
+        public void exo2_5(){
+
+        }
+
+        public void exo2_6(){
+
         }
     }
 }

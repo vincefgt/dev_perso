@@ -135,5 +135,9 @@ public class Outils {
 
         return moy;
     }
+    public float popupEnterValue(String msg){
+        String input = JOptionPane.showInputDialog(null, msg);
+        return Float.parseFloat(input);
+    }
 }
 
