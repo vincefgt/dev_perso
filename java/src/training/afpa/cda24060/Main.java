@@ -1,6 +1,8 @@
 package training.afpa.cda24060;
 import actionclass.actionclass;
 import utils.Outils;
+
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -20,17 +22,18 @@ public class Main {
         exo exo = new exo();
         //exo.AverageNotes();
         //exo.SortTab()
-        exo.exo6();
+        exo.exo2_3();
 
-        /*/ exo 5
+        // exo 5
         Outils outils = new Outils();
-        float[] scoreboard = outils.createTab(5);
+        /*float[] scoreboard = outils.createTab(5);
         float[] scoreboardSort = outils.sortTab(scoreboard);
 
         System.out.println("Enter search value:");
         Scanner sc = new Scanner(System.in);
         int searchvalue = sc.nextInt();
         outils.searchValue(scoreboardSort, searchvalue);*/
+
     }
 
     public static class exo {
@@ -41,7 +44,7 @@ public class Main {
         float key;
         int memkey; //indice of memorissation
 
-    public void AverageNotes() { //4.1
+        public void AverageNotes() { //4.1
 
             for (i = 0; i<scoreboard.length ; i++) {
                 System.out.println("Please enter the note(" + (i + 1) + ") ?");
@@ -56,7 +59,7 @@ public class Main {
 
     }
 
-        public void ex2() { //2 > 3
+        public void exo1_2() { //2 > 3
             int sum = 1;
             int i = 1;
             int N;
@@ -82,7 +85,7 @@ public class Main {
             System.out.println("La factorielle de "+N+" est : "+sum);
         }
 
-        public void exo3(){
+        public void exo1_3(){
         double a;
         double b;
         double c;
@@ -110,7 +113,7 @@ public class Main {
         System.out.println("x1 = "+x1+" et x2 = " + sol2);
         }
 
-        public void exo4() {
+        public void exo1_4() {
             int x;
             int y;
             int result ;
@@ -128,13 +131,37 @@ public class Main {
             System.out.println(x+"^"+y+" = "+result);
         }
 
-        public void exo6() {
+        public void exo1_6() {
             int indexMax = 10;
             Outils outils = new Outils();
             outils.createTab2(indexMax,2);
 
         }
+
+        public void exo2_1(){
+        Outils outils = new Outils();
+            // Creation Tab
+            float[] tab = outils.createTab();
+            outils.popup(Arrays.toString(tab),"ARRAY EXO2_1");
+            // Max value
+            String maxValue = Float.toString(outils.maxValueTab(tab));
+            outils.popup("La valeur max est "+maxValue,"ARRAY EXO2_1");
         }
+
+        public void exo2_2(){
+            Outils outils = new Outils();
+            // Creation Tab
+            float[] tab = outils.createTab();
+            outils.popup(Arrays.toString(tab),"ARRAY EXO2_2");
+            // Calcul Moy
+            String moyValue = Float.toString(outils.moyValueTab(tab));
+            outils.popup("La moyenne est : "+moyValue,"MOY EXO2_2");
+        }
+
+        public void exo2_3(){
+            Outils outils = new Outils();
+        }
+    }
 }
 
 
