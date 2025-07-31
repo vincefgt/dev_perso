@@ -20,9 +20,7 @@ public class Main {
         //main.start();
 
         exo exo = new exo();
-        //exo.AverageNotes();
-        //exo.SortTab()
-        exo.exo2_3();
+        exo.exo2_5();
 
         // exo 5
         Outils outils = new Outils();
@@ -44,7 +42,8 @@ public class Main {
         float key;
         int memkey; //indice of memorissation
 
-        public void AverageNotes() { //4.1
+        // average notes
+        public void exo1_1() { //4.1
 
             for (i = 0; i<scoreboard.length ; i++) {
                 System.out.println("Please enter the note(" + (i + 1) + ") ?");
@@ -158,18 +157,50 @@ public class Main {
             outils.popup("La moyenne est : "+moyValue,"MOY EXO2_2");
         }
 
+        // display windows may value
         public void exo2_3(){
             Outils outils = new Outils();
-            String value = Float.toString(outils.popupEnterValue("Enter your number"));
-            System.out.println(value);
+            int value = (int) (outils.popupEnterValue("Enter your number of array"));
+            //display tab of value
+            String valueString = Arrays.toString(outils.createTabValueEnter(value));
+            outils.popup(valueString,"tab of Value");
+            String moyValue = Float.toString(outils.moyValueTab(scoreboard));
+            outils.popup("La moyenne des "+value+" entier(s) est "+moyValue,"MOY EXO2_3");
         }
 
-        public void exo2_4(){
+        public void exo2_4() {
+            Outils outils = new Outils();
+            int[][] tab = outils.createTab2Multi(10, 10);
+            //loop calcul
+            boolean choiceUser = true;
+            while (choiceUser != false) {
+            //calcul
+            float x = outils.popupEnterValue("1er operance");
 
+            // init error windows x
+            while (x % 1 != 0) {
+                outils.errorpopup();
+                x = outils.popupEnterValue("1er operance");;
+                }
+
+            float y = outils.popupEnterValue("2er operance");
+                while (y % 1 != 0) {
+                    outils.errorpopup();
+                    y = outils.popupEnterValue("2er operance");
+                }
+
+                int produitValue = (int) x * (int) y;
+            outils.popup("Le resultat de " + x + "x" + y + "=" + produitValue, "Result");
+            choiceUser = outils.againpopup("Souhaitez-vous encore un calcul ?", "Multiplication");
+            }
         }
 
         public void exo2_5(){
-
+            Outils outils = new Outils();
+            char ope = outils.popupEnterValueOpe("Choississez un operateur -,+,*,/");
+            float ope1 = outils.popupEnterValue("Choississez un reel");
+            float ope2 = outils.popupEnterValue("Choississez un reel");
+            result =  outils.popup("Le resultat de "+ope1+ope+ope2+" est "+outils.calculator(ope,ope1,ope2));
         }
 
         public void exo2_6(){

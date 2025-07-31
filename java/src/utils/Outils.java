@@ -13,7 +13,7 @@ public class Outils {
         return readenter;
     }*/
 
-    //create Tab 1 dimension
+    //create Tab 1 dimension w/ Size to enter
     public float[] createTab(){
         int indexMax;
         System.out.println("Enter tab length:");
@@ -76,13 +76,16 @@ public class Outils {
         System.out.println("searchValue index: "+(middlekey+1));
     }
 
-    //Create tab 2 dim
-    public void createTab2(int indexMax, int indexMax2){
+    //Create tab 2 dim factor
+    public int[][] createTab2(int indexMax, int indexMax2){
         //int indexMax2 = 2;
         int N;
+
+        // only of <exo2_1
         System.out.println("Enter tab length:");
         Scanner sc = new Scanner(System.in);
         indexMax = sc.nextInt();
+
         int[][] scoreboard2 = new int[indexMax][indexMax2];
         for (int i = 0; i < indexMax; i++) {
             for (int j = 0; j < indexMax2; j++) {
@@ -99,8 +102,11 @@ public class Outils {
         }
         // Method 2
         System.out.println(Arrays.deepToString(scoreboard2));
+        return scoreboard2;
 
     }
+
+    //calcul factor
     public int factor(int j) { //2 > 3
         int sumf = 1;
         int k = 1;
@@ -111,9 +117,13 @@ public class Outils {
         //System.out.println("La factorielle de "+N+" est : "+sum);
         return sumf;
     }
+
+    //dsiplay windows w msg
     public void popup(String msg,String title){
         JOptionPane.showMessageDialog(null,msg,title, JOptionPane.INFORMATION_MESSAGE);
     }
+
+    //Find Max Value in tab
     public float maxValueTab(float[] scoreboard){
      float maxValue = 0;
         for (int i = 1; i < scoreboard.length ; i++) {
@@ -123,6 +133,8 @@ public class Outils {
      }
         return maxValue;
     }
+
+    //calcul average for tab
     public float moyValueTab(float[] tab){
         float sum = 1;
         int i = 1;
@@ -135,9 +147,77 @@ public class Outils {
 
         return moy;
     }
+
+    //Enter value via popup windows
     public float popupEnterValue(String msg){
         String input = JOptionPane.showInputDialog(null, msg);
         return Float.parseFloat(input);
     }
+
+    //create Tab 1 dimension Size to enter
+    public float[] createTabValueEnter(int indexMax){
+        float[] scoreboard = new float[indexMax];
+        for (int i = 0; i < indexMax; i++) {
+            System.out.println("Enter number("+(i+1)+"): ");
+            Scanner sc = new Scanner(System.in);
+            scoreboard[i] = sc.nextInt();
+        }
+        System.out.println(Arrays.toString(scoreboard));
+        return scoreboard;
+    }
+
+    //Create tab 2 dim multi
+    public int[][] createTab2Multi(int indexMax, int indexMax2){
+        //int indexMax2 = 2;
+        int N;
+
+        int[][] scoreboard2 = new int[indexMax][indexMax2];
+        for (int i = 0; i < indexMax; i++) {
+            for (int j = 0; j < indexMax2; j++) {
+                if (j == 0){
+                    scoreboard2[i][j] = i+1;
+                } else {
+                    scoreboard2[i][j] = (i+1)*j;
+                }
+                System.out.print(scoreboard2[i][j] + " ");
+            }
+            System.out.println(); // new line
+        }
+        // Method 2
+        //System.out.println(Arrays.deepToString(scoreboard2));
+        return scoreboard2;
+    }
+
+    public void errorpopup(){
+        JOptionPane.showMessageDialog(null,"Please enter a correct number","ERROR",JOptionPane.ERROR_MESSAGE);
+    }
+
+    public boolean againpopup(String msg,String title){
+        boolean choice = true;
+        //while (choice) {
+        int option = JOptionPane.showConfirmDialog(null,msg,title,JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        // Réagir au choix
+        if (option == JOptionPane.YES_OPTION) {
+            choice = true;  // boucle continue
+        } else {
+            choice = false;
+            //break;
+        }
+        //}
+        return choice;
+    }
+
+    //Calculator
+    public static float calculator(char operator,float ope1,float ope2){
+        float sum = ope1+operator+ope2;
+        return sum;
+    };
+
+    //Enter value via popup windows ope
+    public char popupEnterValueOpe(String msg){
+        String ope = JOptionPane.showInputDialog(null, msg);
+        return ope.charAt(0);
+    }
+
 }
 
