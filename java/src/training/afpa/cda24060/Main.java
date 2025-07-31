@@ -1,8 +1,8 @@
 package training.afpa.cda24060;
-import actionclass.actionclass;
 import utils.Outils;
 
-import java.lang.reflect.Array;
+import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -18,19 +18,60 @@ public class Main {
         Main main = new Main();
         // call methode
         //main.start();
-
         exo exo = new exo();
-        exo.exo2_5();
+        Outils outils = new Outils();
+
+        ArrayList<String> numberExo = new ArrayList<>();
+        numberExo.add("exo1_1");
+        numberExo.add("exo1_2");
+        numberExo.add("exo1_3");
+        numberExo.add("exo1_4");
+        numberExo.add("exo1_5");
+        numberExo.add("exo1_6");
+        numberExo.add("exo2_1");
+        numberExo.add("exo2_2");
+        numberExo.add("exo2_3");
+        numberExo.add("exo2_4");
+        numberExo.add("exo2_5");
+        numberExo.add("exo2_6");
+
+        //tiny list
+        StringBuilder list = new StringBuilder();
+        for (String n : numberExo) {
+            list.append(n).append("\n");
+        }
+        String exoValue = JOptionPane.showInputDialog(null,list.toString()+"Select the exo to show");
+
+        switch(exoValue){
+            case "exo1_1": exo.exo1_1();
+                break;
+            case "exo1_2": exo.exo1_2();
+                break;
+            case "exo1_3": exo.exo1_3();
+                break;
+            case "exo1_4": exo.exo1_4();
+                break;
+            case "exo1_5": exo.exo1_5();
+                break;
+            case "exo1_6": exo.exo1_6();
+                break;
+            case "exo2_1": exo.exo2_1();
+                break;
+            case "exo2_2": exo.exo2_2();
+                break;
+            case "exo2_3": exo.exo2_3();
+                break;
+            case "exo2_4":exo.exo2_4();
+                break;
+            case "exo2_5":exo.exo2_5();
+                break;
+            case "exo2_6":exo.exo2_6();
+                break;
+            default :
+                break;
+        }
 
         // exo 5
-        Outils outils = new Outils();
-        /*float[] scoreboard = outils.createTab(5);
-        float[] scoreboardSort = outils.sortTab(scoreboard);
-
-        System.out.println("Enter search value:");
-        Scanner sc = new Scanner(System.in);
-        int searchvalue = sc.nextInt();
-        outils.searchValue(scoreboardSort, searchvalue);*/
 
     }
 
@@ -41,11 +82,13 @@ public class Main {
         float notes = 0;
         float key;
         int memkey; //indice of memorissation
+        Main main = new Main();
+
 
         // average notes
         public void exo1_1() { //4.1
 
-            for (i = 0; i<scoreboard.length ; i++) {
+            for (i = 0; i < scoreboard.length; i++) {
                 System.out.println("Please enter the note(" + (i + 1) + ") ?");
                 Scanner scanner = new Scanner(System.in);
                 notes = scanner.nextFloat();
@@ -56,7 +99,7 @@ public class Main {
             System.out.println("Average = " + result / scoreboard.length); // display average
             System.out.println(Arrays.toString(scoreboard)); //display scoreboard
 
-    }
+        }
 
         public void exo1_2() { //2 > 3
             int sum = 1;
@@ -81,41 +124,40 @@ public class Main {
                 i++;
             } while (i <= N);
 
-            System.out.println("La factorielle de "+N+" est : "+sum);
+            System.out.println("La factorielle de " + N + " est : " + sum);
         }
 
-        public void exo1_3(){
-        double a;
-        double b;
-        double c;
-        double discri;
-        double x1 = 0;
-        double sol2 = 0;
+        public void exo1_3() {
+            double a;
+            double b;
+            double c;
+            double discri;
+            double x1 = 0;
+            double sol2 = 0;
 
-        System.out.println("Enter a:");
-        Scanner sc = new Scanner(System.in);
-        a = sc.nextDouble();
-        System.out.println("Enter b:");
-        b = sc.nextDouble();
-        System.out.println("Enter c:");
-        c = sc.nextDouble();
-        discri = (b*b)-4*(a*c);
-        System.out.println("Le disicriminant est : "+discri);
+            System.out.println("Enter a:");
+            Scanner sc = new Scanner(System.in);
+            a = sc.nextDouble();
+            System.out.println("Enter b:");
+            b = sc.nextDouble();
+            System.out.println("Enter c:");
+            c = sc.nextDouble();
+            discri = (b * b) - 4 * (a * c);
+            System.out.println("Le disicriminant est : " + discri);
 
-        if (discri == 0) {
-            x1 = (-b) / (2 * a);
-        }
-        else if (discri > 0) {
-                x1 = (-b + Math.sqrt(discri))/(2*a);
-                sol2 = (-b - Math.sqrt(discri))/(2*a);
-                }
-        System.out.println("x1 = "+x1+" et x2 = " + sol2);
+            if (discri == 0) {
+                x1 = (-b) / (2 * a);
+            } else if (discri > 0) {
+                x1 = (-b + Math.sqrt(discri)) / (2 * a);
+                sol2 = (-b - Math.sqrt(discri)) / (2 * a);
+            }
+            System.out.println("x1 = " + x1 + " et x2 = " + sol2);
         }
 
         public void exo1_4() {
             int x;
             int y;
-            int result ;
+            int result;
             int indicep = 1;
             System.out.println("Enter x:");
             Scanner sc = new Scanner(System.in);
@@ -127,45 +169,55 @@ public class Main {
                 result = result * x;
                 indicep = indicep + 1;
             } while (indicep == y);
-            System.out.println(x+"^"+y+" = "+result);
+            System.out.println(x + "^" + y + " = " + result);
+        }
+
+        public void exo1_5(){
+            Outils outils = new Outils();
+            float[] scoreboardSort = outils.sortTab(scoreboard);
+            System.out.println("Enter search value:");
+            Scanner sc = new Scanner(System.in);
+            int searchvalue = sc.nextInt();
+            outils.searchValue(scoreboardSort, searchvalue);
+            float[] scoreboard = outils.createTab();
         }
 
         public void exo1_6() {
             int indexMax = 10;
             Outils outils = new Outils();
-            outils.createTab2(indexMax,2);
+            outils.createTab2(indexMax, 2);
 
         }
 
-        public void exo2_1(){
-        Outils outils = new Outils();
-            // Creation Tab
-            float[] tab = outils.createTab();
-            outils.popup(Arrays.toString(tab),"ARRAY EXO2_1");
-            // Max value
-            String maxValue = Float.toString(outils.maxValueTab(tab));
-            outils.popup("La valeur max est "+maxValue,"ARRAY EXO2_1");
-        }
-
-        public void exo2_2(){
+        public void exo2_1() {
             Outils outils = new Outils();
             // Creation Tab
             float[] tab = outils.createTab();
-            outils.popup(Arrays.toString(tab),"ARRAY EXO2_2");
+            outils.popup(Arrays.toString(tab), "ARRAY EXO2_1");
+            // Max value
+            String maxValue = Float.toString(outils.maxValueTab(tab));
+            outils.popup("La valeur max est " + maxValue, "ARRAY EXO2_1");
+        }
+
+        public void exo2_2() {
+            Outils outils = new Outils();
+            // Creation Tab
+            float[] tab = outils.createTab();
+            outils.popup(Arrays.toString(tab), "ARRAY EXO2_2");
             // Calcul Moy
             String moyValue = Float.toString(outils.moyValueTab(tab));
-            outils.popup("La moyenne est : "+moyValue,"MOY EXO2_2");
+            outils.popup("La moyenne est : " + moyValue, "MOY EXO2_2");
         }
 
         // display windows may value
-        public void exo2_3(){
+        public void exo2_3() {
             Outils outils = new Outils();
             int value = (int) (outils.popupEnterValue("Enter your number of array"));
             //display tab of value
             String valueString = Arrays.toString(outils.createTabValueEnter(value));
-            outils.popup(valueString,"tab of Value");
+            outils.popup(valueString, "tab of Value");
             String moyValue = Float.toString(outils.moyValueTab(scoreboard));
-            outils.popup("La moyenne des "+value+" entier(s) est "+moyValue,"MOY EXO2_3");
+            outils.popup("La moyenne des " + value + " entier(s) est " + moyValue, "MOY EXO2_3");
         }
 
         public void exo2_4() {
@@ -174,36 +226,67 @@ public class Main {
             //loop calcul
             boolean choiceUser = true;
             while (choiceUser != false) {
-            //calcul
-            float x = outils.popupEnterValue("1er operance");
+                //calcul
+                float x = outils.popupEnterValue("1er operance");
 
-            // init error windows x
-            while (x % 1 != 0) {
-                outils.errorpopup();
-                x = outils.popupEnterValue("1er operance");;
+                // init error windows x
+                while (x % 1 != 0) {
+                    outils.errorpopup("!");
+                    x = outils.popupEnterValue("1er operance");
+                    ;
                 }
 
-            float y = outils.popupEnterValue("2er operance");
+                float y = outils.popupEnterValue("2er operance");
                 while (y % 1 != 0) {
-                    outils.errorpopup();
+                    outils.errorpopup("!");
                     y = outils.popupEnterValue("2er operance");
                 }
 
                 int produitValue = (int) x * (int) y;
-            outils.popup("Le resultat de " + x + "x" + y + "=" + produitValue, "Result");
-            choiceUser = outils.againpopup("Souhaitez-vous encore un calcul ?", "Multiplication");
+                outils.popup("Le resultat de " + x + "x" + y + "=" + produitValue, "Result");
+                choiceUser = outils.againpopup("Souhaitez-vous encore un calcul ?", "Multiplication");
             }
         }
 
-        public void exo2_5(){
+        public void exo2_5() {
             Outils outils = new Outils();
             char ope = outils.popupEnterValueOpe("Choississez un operateur -,+,*,/");
             float ope1 = outils.popupEnterValue("Choississez un reel");
             float ope2 = outils.popupEnterValue("Choississez un reel");
-            result =  outils.popup("Le resultat de "+ope1+ope+ope2+" est "+outils.calculator(ope,ope1,ope2));
+            while (ope == '/') {
+                if (ope1 == 0) {
+                    outils.errorpopup("division par 0 impossible ");
+                    ope1 = outils.popupEnterValue("Choississez un reel");
+                } else if (ope2 == 0) {
+                    outils.errorpopup("division par 0 impossible ");
+                    ope2 = outils.popupEnterValue("Choississez un reel");
+                } else {
+                    float result = outils.calculator(ope, ope1, ope2);
+                    outils.popup("Le resultat de " + ope1 + ope + ope2 + " est " + result, "Result");
+                    break;
+                }
+            }
         }
 
-        public void exo2_6(){
+        //tab Sorting
+        public void exo2_6() {
+            Outils outils = new Outils();
+            int value = (int) (outils.popupEnterValue("Enter your number of array"));
+            //display tab of value
+            float[] scoreboard = outils.createTabValueEnter(value);
+            String valueString = Arrays.toString(scoreboard);
+            outils.popup(valueString, "tab of Value");
+            int choice = outils.TypeSort();
+            switch (choice) {
+                case 0: float[] SortTab = outils.sortTab(scoreboard);
+                    outils.popup(Arrays.toString(SortTab), "tab of Sort Values");
+                    break;
+                case 1: SortTab = outils.sortdescensingTab(scoreboard);
+                    outils.popup(Arrays.toString(SortTab), "tab of Sort Values");
+                    break;
+                default:
+                    break;
+            }
 
         }
     }

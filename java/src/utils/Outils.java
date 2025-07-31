@@ -158,9 +158,10 @@ public class Outils {
     public float[] createTabValueEnter(int indexMax){
         float[] scoreboard = new float[indexMax];
         for (int i = 0; i < indexMax; i++) {
-            System.out.println("Enter number("+(i+1)+"): ");
-            Scanner sc = new Scanner(System.in);
-            scoreboard[i] = sc.nextInt();
+          //  System.out.println("Enter number("+(i+1)+"): ");
+         //   Scanner sc = new Scanner(System.in);
+ //           scoreboard[i] = sc.nextInt();
+            scoreboard[i] = popupEnterValue("Enter number("+(i+1)+")");
         }
         System.out.println(Arrays.toString(scoreboard));
         return scoreboard;
@@ -188,8 +189,9 @@ public class Outils {
         return scoreboard2;
     }
 
-    public void errorpopup(){
-        JOptionPane.showMessageDialog(null,"Please enter a correct number","ERROR",JOptionPane.ERROR_MESSAGE);
+    // Error msg
+    public void errorpopup(String msg){
+        JOptionPane.showMessageDialog(null,"Please enter a correct number"+msg,"ERROR",JOptionPane.ERROR_MESSAGE);
     }
 
     public boolean againpopup(String msg,String title){
@@ -209,7 +211,23 @@ public class Outils {
 
     //Calculator
     public static float calculator(char operator,float ope1,float ope2){
-        float sum = ope1+operator+ope2;
+        float sum =0;
+        switch (operator) {
+            case '+': sum = ope1 + ope2;
+                break;
+            case '-': sum = ope1 - ope2;
+                break;
+            case '/':
+                if (ope1 == 0 || ope2 ==0){
+                    JOptionPane.showMessageDialog(null, "Erreur : division par zéro !");
+                }
+                sum = ope1 / ope2;
+                break;
+            case '*' : sum = ope1*ope2;
+                break;
+            default: JOptionPane.showMessageDialog(null, "Opérateur non reconnu : "+operator);
+                    break;
+        }
         return sum;
     };
 
@@ -218,6 +236,40 @@ public class Outils {
         String ope = JOptionPane.showInputDialog(null, msg);
         return ope.charAt(0);
     }
+
+    //popupSort
+    public static int TypeSort(){
+        String[] options = { "ascending", "descending"};
+        int choice = JOptionPane.showOptionDialog(
+                null,
+                "Sort by ...",
+                "Menu principal",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                options,
+                options[0]);
+        return choice;
+    }
+
+    //sort
+    public float[] sortdescensingTab(float[] scoreboard){
+        float key;
+        int memkey; //indice of memorissation
+        for (int i = 1; i < scoreboard.length ; i++) {
+            key = scoreboard[i];
+            memkey = i - 1; //save previous number
+
+            while (memkey >= 0 && scoreboard[memkey] < key) {
+                scoreboard[memkey+1] = scoreboard[memkey];
+                memkey = memkey-1;
+            }
+            scoreboard[memkey+1] = key;
+        }
+        System.out.println(Arrays.toString(scoreboard)); //display scoreboard
+        return scoreboard;
+    }
+
 
 }
 
