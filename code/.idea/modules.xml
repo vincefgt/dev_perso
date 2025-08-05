@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/training.afpa.cda24060.iml" filepath="$PROJECT_DIR$/training.afpa.cda24060.iml" />
+      <module fileurl="file://$PROJECT_DIR$/code.iml" filepath="$PROJECT_DIR$/code.iml" />
     </modules>
   </component>
 </project>
