@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Outils {
+public class Tool {
 
     /*public int void scan(){
         Scanner sc = new Scanner(System.in);

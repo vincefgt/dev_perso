@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60532a45-0519-4666-a2a2-8b2c8646c46c" name="Changes" comment="java 05/08" />
+    <list default="true" id="106e0295-5623-4489-bd72-9b2c9955d5bb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/vf_java/src/exo_poo/Compte.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vf_java/src/exo_poo/TestCompte.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vf_java/src/training/afpa/cda24060/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vf_java/src/training/afpa/cda24060/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/vf_java/src/training/afpa/cda24060/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vf_java/src/utils/Outils.java" beforeDir="false" afterPath="$PROJECT_DIR$/vf_java/src/utils/Tool.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory"><![CDATA[{
   "lastFilter": {
@@ -23,9 +30,9 @@
   }
 }]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
+  "associatedIndex": 4
 }]]></component>
-  <component name="ProjectId" id="30re842BN3hj4iw1tNAXxZs2adI" />
+  <component name="ProjectId" id="30rvTy8lpbZir2yq2yvt4Y6NGwu" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -36,24 +43,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Candidat-xx/Desktop/25_afpa_cda/afpa/java",
     "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/Candidat-xx/Desktop/25_afpa_cda/afpa/java/code/src/Main.java",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="vf_java" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="vf_java" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -64,37 +58,16 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="60532a45-0519-4666-a2a2-8b2c8646c46c" name="Changes" comment="" />
-      <created>1754389956130</created>
+      <changelist id="106e0295-5623-4489-bd72-9b2c9955d5bb" name="Changes" comment="" />
+      <created>1754398517492</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1754389956130</updated>
-      <workItem from="1754389957234" duration="263000" />
+      <updated>1754398517492</updated>
+      <workItem from="1754398518537" duration="95000" />
     </task>
-    <task id="LOCAL-00001" summary="java 05/08">
-      <option name="closed" value="true" />
-      <created>1754390036251</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1754390036251</updated>
-    </task>
-    <task id="LOCAL-00002" summary="java 05/08">
-      <option name="closed" value="true" />
-      <created>1754390184329</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1754390184329</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="java 05/08" />
-    <option name="LAST_COMMIT_MESSAGE" value="java 05/08" />
   </component>
 </project>
