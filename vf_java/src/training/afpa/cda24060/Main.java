@@ -1,6 +1,8 @@
 package training.afpa.cda24060;
-import exo_poo.Compte;
-import exo_poo.TestCompte;
+
+import exo_poo.*;
+import training.afpa.cda24060.geometry.Circle;
+import training.afpa.cda24060.geometry.TestCircle;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -17,16 +19,14 @@ public class Main {
     }
 
     private void start() {
+        // via List
+        List_exo.App();
+        //Exo
+        //TestCompte.testCompte(200, 50, 61);
+        //CarExecution.execution("bmw", 100);
+        //TestRectangle.testRectangle(40,30)
 
-        /*
-        Compte c1 = new Compte(100);
-        Compte c2 = new Compte(200);
-        c1.deposer(20);
-        c1.retirer(500);
-        Compte.displayNbObjets();*/
-
-        TestCompte test1 = new TestCompte(100);
-
+        // }
 
     }
 }

@@ -1,5 +1,9 @@
 package training.afpa.cda24060;
 
+import exo_poo.CarExecution;
+import exo_poo.TestCompte;
+import exo_poo.TestRectangle;
+import training.afpa.cda24060.geometry.TestCircle;
 import utils.Tool;
 
 import javax.swing.*;
@@ -7,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Exo_algo_java {
+public class List_exo {
     int i;
     float[] scoreboard = new float[3];
     float result = 0;
@@ -15,24 +19,36 @@ public class Exo_algo_java {
     float key;
     int memkey; //indice of memorissation
 
-    public void App() {
+    public static void App() {
 
         Tool tool = new Tool();
-        Exo_algo_java exoAlgojava = new Exo_algo_java();
+        List_exo exoAlgojava = new List_exo();
 
         ArrayList<String> numberExo = new ArrayList<>();
-        numberExo.add("exo1_1");
-        numberExo.add("exo1_2");
-        numberExo.add("exo1_3");
-        numberExo.add("exo1_4");
-        numberExo.add("exo1_5");
-        numberExo.add("exo1_6");
-        numberExo.add("exo2_1");
-        numberExo.add("exo2_2");
-        numberExo.add("exo2_3");
-        numberExo.add("exo2_4");
-        numberExo.add("exo2_5");
-        numberExo.add("exo2_6");
+        numberExo.add("1 - TestCompte");
+        numberExo.add("2 - ExecutionCar");
+        numberExo.add("3 - TestRectangle");
+        numberExo.add("4 - TestCircle");
+        numberExo.add("5 - exo1_5");
+        numberExo.add("6 - exo1_6");
+//        numberExo.add("exo2_1");
+//        numberExo.add("exo2_2");
+//        numberExo.add("exo2_3");
+//        numberExo.add("exo2_4");
+//        numberExo.add("exo2_5");
+//        numberExo.add("exo2_6");
+//        numberExo.add("exo1_1");
+//        numberExo.add("exo1_2");
+//        numberExo.add("exo1_3");
+//        numberExo.add("exo1_4");
+//        numberExo.add("exo1_5");
+//        numberExo.add("exo1_6");
+//        numberExo.add("exo2_1");
+//        numberExo.add("exo2_2");
+//        numberExo.add("exo2_3");
+//        numberExo.add("exo2_4");
+//        numberExo.add("exo2_5");
+//        numberExo.add("exo2_6");
 
         //tiny list
         StringBuilder list = new StringBuilder();
@@ -42,32 +58,29 @@ public class Exo_algo_java {
         String exoValue = JOptionPane.showInputDialog(null,list.toString()+"Select the exo to show");
 
         switch(exoValue){
-            case "exo1_1": exoAlgojava.exo1_1();
+            case "1":  TestCompte.testCompte(100, 50, 61);
                 break;
-            case "exo1_2": exoAlgojava.exo1_2();
+            case "2":  CarExecution.execution("bmw", 100);
                 break;
-            case "exo1_3": exoAlgojava.exo1_3();
+            case "3":  TestRectangle.testRectangle(40,30);
                 break;
-            case "exo1_4": exoAlgojava.exo1_4();
+            case "4":  TestCircle.testCircle(5,3,4,7,7); //5,3,4,7,7
                 break;
-            case "exo1_5": exoAlgojava.exo1_5();
+            case "5": exoAlgojava.exo1_5();
                 break;
-            case "exo1_6": exoAlgojava.exo1_6();
+            case "6": exoAlgojava.exo1_6();
                 break;
-            case "exo2_1": exoAlgojava.exo2_1();
+            case "7": exoAlgojava.exo2_1();
                 break;
-            case "exo2_2": exoAlgojava.exo2_2();
+            case "8": exoAlgojava.exo2_2();
                 break;
-            case "exo2_3": exoAlgojava.exo2_3();
+            case "9": exoAlgojava.exo2_3();
                 break;
-            case "exo2_4":
-                exoAlgojava.exo2_4();
+            case "10":exoAlgojava.exo2_4();
                 break;
-            case "exo2_5":
-                exoAlgojava.exo2_5();
+            case "11":exoAlgojava.exo2_5();
                 break;
-            case "exo2_6":
-                exoAlgojava.exo2_6();
+            case "12":exoAlgojava.exo2_6();
                 break;
             default :
                 break;
