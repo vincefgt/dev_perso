@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static exo_poo.TestLivre.mainLivre;
+
 public class List_exo {
     int i;
     float[] scoreboard = new float[3];
@@ -29,7 +31,7 @@ public class List_exo {
         numberExo.add("2 - ExecutionCar");
         numberExo.add("3 - TestRectangle");
         numberExo.add("4 - TestCircle");
-        numberExo.add("5 - exo1_5");
+        numberExo.add("5 - Livre");
         numberExo.add("6 - exo1_6");
 //        numberExo.add("exo2_1");
 //        numberExo.add("exo2_2");
@@ -66,7 +68,7 @@ public class List_exo {
                 break;
             case "4":  TestCircle.testCircle(5,3,4,7,7); //5,3,4,7,7
                 break;
-            case "5": exoAlgojava.exo1_5();
+            case "5":  mainLivre();
                 break;
             case "6": exoAlgojava.exo1_6();
                 break;
