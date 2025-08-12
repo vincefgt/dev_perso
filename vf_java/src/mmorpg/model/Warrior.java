@@ -1,11 +1,12 @@
 package mmorpg.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Warrior extends Person {
     private int pos = 0; //point of strength;
 
-    public Warrior(String name, int level, int pol, Race race, Classes Class, int pos) {
+    public Warrior(String name, int level, int pol, String race, String Class, int pos) {
         super(name, level,pol, race,Class);
         this.setPos(pos);
     }
@@ -18,7 +19,21 @@ public class Warrior extends Person {
         this.pos = pos;
     }
 
-    ArrayList<String> warrior = new ArrayList<>();
+    // create list of
+    private static ArrayList<Warrior> listWarrior = new ArrayList<>();
 
+    public static void createListWarrior() {
+        //Warrior defautl = new Warrior("default",1,100,null,null,100);
+        //Warrior.getListWarrior().add(defautl);
+    }
+
+
+    public static List<Warrior> getListWarrior(){
+        return listWarrior;
+    }
+
+    public static void addWarrior(Warrior w){
+        listWarrior.add(w);
+    }
 
 }
