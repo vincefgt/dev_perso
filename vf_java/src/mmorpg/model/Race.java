@@ -1,23 +1,28 @@
 package mmorpg.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Race {
     private String type;
+    private static Map<String, Race> raceMap = new HashMap<>();
+
 
     public Race(String type) {
-        this.setType(type);
+        this.setRace(type);
     }
 
-    public String getType() {
-        return type;
+    public static Map<String, Race> getRace() {
+        return raceMap;
     }
 
-    public void setType(String type) {
+    public void setRace(String type) {
         this.type = type;
     }
 
     @Override
     public String toString() {
-        return this.getType();
+        return this.getRace().toString();
     }
 }
 

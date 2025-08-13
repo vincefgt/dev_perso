@@ -6,12 +6,12 @@ import java.util.List;
 public class Healer extends Person{
     private int pom = 0; //point of strength;
 
-    public Healer(String name, int level, int pol, String race, String Class, int pom) {
-        super(name, level,pol, race,Class);
+    public Healer(String name, int level, int pol, Race race, Classes Class, Group group, int pom) {
+        super(name, level,pol, race,Class,group);
         this.setPom(pom);
     }
 
-    public static ArrayList<Healer> listHealer = new ArrayList<>();
+    public static List<Healer> listHealer = new ArrayList<>();
 
     public static List<Healer> getListHealer(){
         return listHealer;
@@ -30,12 +30,8 @@ public class Healer extends Person{
     }
 
 
-
-
-
-
-
-
-
-
+    @Override
+    public String toString(){
+        return super.toString()+" "+ getPom()+" / "+super.getGroup();
+    }
 }

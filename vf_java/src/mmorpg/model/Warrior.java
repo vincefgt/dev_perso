@@ -6,8 +6,8 @@ import java.util.List;
 public class Warrior extends Person {
     private int pos = 0; //point of strength;
 
-    public Warrior(String name, int level, int pol, String race, String Class, int pos) {
-        super(name, level,pol, race,Class);
+    public Warrior(String name, int level, int pol, Race race, Classes Class, Group group, int pos) {
+        super(name, level,pol, race,Class,group);
         this.setPos(pos);
     }
 
@@ -34,6 +34,11 @@ public class Warrior extends Person {
 
     public static void addWarrior(Warrior w){
         listWarrior.add(w);
+    }
+
+    @Override
+    public String toString(){
+        return super.toString()+" "+ getPos()+" / "+super.getGroup();
     }
 
 }

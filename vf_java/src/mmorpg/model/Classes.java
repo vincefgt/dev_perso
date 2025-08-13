@@ -1,9 +1,13 @@
 package mmorpg.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Classes {
     private String name;
     private String weapon;
     private String armor;
+    private static Map<String, Classes> classes = new HashMap<>();
 
     public Classes (String name){
         this.setName(name);
@@ -37,6 +41,9 @@ public class Classes {
         }
         return this.armor;
     }
+
+    public static Map<String, Classes> getClasses() {
+        return classes;}
 
 
     public String getName() {

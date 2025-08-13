@@ -6,16 +6,26 @@ public class Person {
     private String name =null;
     private int level=0;
     private int pol=0; //point of live
-    private String race;
-    private String classes;
+    private Race race;
+    private Classes classes;
+    private Group group;
 
 
-    public Person(String name, int level, int pol, String race, String classes) {
+    public Person(String name, int level, int pol, Race race, Classes Class,Group G) {
         this.setName(name);
         this.setLevel(level);
         this.setPol(pol);
         this.setRace(race);
         this.setClasses(classes);
+        this.setGroup(G);
+    }
+
+    public void setGroup(Group g){
+        this.group = g;
+    }
+
+    public Group getGroup(){
+        return this.group;
     }
 
     static ArrayList<Person> listPerson = new ArrayList<>();
@@ -30,15 +40,16 @@ public class Person {
     public void setLevel(int level) {this.level = level;}
     public int getPol() {return pol;}
     public void setPol(int pol) {this.pol = pol;}
-    public String getRace() {return race;}
-    public void setRace(String race) {this.race = race;}
-    public String getClasses() {return classes;}
-    public void setClasses(String classes) {this.classes = classes;}
+    public Race getRace() {return race;}
+    public void setRace(Race race) {this.race = race;}
+    public Classes getClasses() {return classes;}
+    public void setClasses(Classes classes) {this.classes = classes;}
 
 
 
     @Override
     public String toString() {
-        return this.getName() + " " + this.getLevel() + " " + this.getPol()+" "+this.getRace()+" "+this.getClasses();
+        return this.getName() + " " + this.getLevel() + " " + this.getPol()+" "+
+                this.getRace()+" "+this.getClasses();//+" "+getGroup();
     }
 }

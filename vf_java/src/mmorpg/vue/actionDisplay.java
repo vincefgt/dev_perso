@@ -9,8 +9,8 @@ public class actionDisplay {
 
     private static String perso; // data personnage
     private static String name;
-    private static String race;
-    private static String classes;
+    private static Race race;
+    private static Classes classes;
     private static String p1;
     private static String p2;
     private static String p3;
@@ -24,20 +24,20 @@ public class actionDisplay {
         //perso.split(" ");
         String [] caracteres = perso.split("\\s+");
         name = caracteres[0].toLowerCase();
-        race = caracteres[1].toLowerCase();
-        classes = caracteres[2].toLowerCase();
+        race = getRace.valueOf.caracteres[1].toLowerCase();
+        classes = Classes.valueOf.caracteres[2].toLowerCase();
 
         //call create person
-        Mmorpg.createPerson();
+        //Mmorpg.createPerson();
     }
 
     public static String getName(){
         return name;
     }
-    public static String getRace(){
+    public static Race getRace(){
         return race;
     }
-    public static String getClasses(){
+    public static Classes getClasses(){
         return classes;
     }
 
@@ -72,7 +72,11 @@ public class actionDisplay {
         InputAndDisplay.message("New Person?: [y/n]",1); //green
         if (sc.nextLine().equals("y")){
            displayCreatePerson();
-        }
+        } else {
+        displayListHealer();
+        displayListThief();
+        displayListWarrior();}
+        displayCreateGroup();
     }
 
     public static void displayListPerson(){
@@ -84,17 +88,39 @@ public class actionDisplay {
         }
     }
 
-    public static String displayNewGroup(String groupName) {
+    public static void displayCreateGroup() {
         InputAndDisplay.message("Create Group?: [y/n]",1); //green
         if (sc.nextLine().equals("y")){
+            displayListPerson();
             InputAndDisplay.message("Give Group Name",1);
-            return actionDisplay.groupName = sc.nextLine();
+            actionDisplay.groupName = sc.nextLine();
             InputAndDisplay.message("Selected 3 players",1);
-            return p1 = sc.nextLine();
+            p1 = sc.nextLine();
             InputAndDisplay.message("Selected 2 players",1);
-            return p2 = sc.nextLine();
+            p2 = sc.nextLine();
             InputAndDisplay.message("Selected 1 players",1);
-            return p3 = sc.nextLine();
+            p3 = sc.nextLine();
+
+            /*return groupName;
+            return p1;
+            return p2;
+            return p3;*/
+        }
+        //call
+        Mmorpg.createGroup(groupName,p1,p2,p3);
+    }
+
+    public static void displayPersonsGroup(String groupName){
+        InputAndDisplay.message("PersonInGroup "+groupName,0); //green
+        for (Group g : Group.getListPersonsGroup()){
+            InputAndDisplay.message(String.valueOf(g),0);
+        }
+    }
+
+    public static void displayListGroup(){
+        InputAndDisplay.message("ListOfGroup:",0); //green
+        for (String g : Group.getListGroup()){
+            InputAndDisplay.message(String.valueOf(g),0);
         }
     }
 
