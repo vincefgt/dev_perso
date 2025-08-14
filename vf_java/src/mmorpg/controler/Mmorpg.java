@@ -2,6 +2,7 @@ package mmorpg.controler;
 
 import com.sun.jdi.event.MonitorWaitEvent;
 import mmorpg.model.*;
+import mmorpg.utility.Regex;
 import mmorpg.vue.InputAndDisplay;
 import mmorpg.vue.actionDisplay;
 
@@ -28,17 +29,9 @@ public class Mmorpg {
         Classes healer = new Classes("healer");
 
         Person p1 = new Person("john", 1, 100, "thief","elfe");*/
+        Regex.testNumber("fdsfsdf sdfsf");
         initWord();
         displayNewPerson();
-        //seize data person
-        //displayCreatePerson();
-        //createPerson();
-//        displayListWarrior();
-//        displayListHealer();
-//        displayListThief();
-        //displayNewPerson();
-
-
     }
 
     // create person
@@ -79,7 +72,6 @@ public class Mmorpg {
                 break;
         }
     }
-
     public static void createThief(String autoName, Race controlRace, Classes autoClasses) {
         Thief t1 = new Thief(autoName,
                 1, 100, (Race) controlRace,
@@ -134,10 +126,7 @@ public class Mmorpg {
         displayListThief();
         displayListWarrior();
     }
-
-
-
-
+    public static void createGroupDate(Group group) {}
     /*@Override
         public String  toString(){
             return this.person;
