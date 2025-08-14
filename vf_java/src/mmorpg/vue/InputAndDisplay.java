@@ -158,6 +158,10 @@ public class InputAndDisplay {
                 // affichage message warming en cyan + message + reset
                 System.out.println(ANSI_CYAN + message + ANSI_RESET);
                 break;
+            case 5:
+                // affichage message warming en cyan + message + reset
+                System.out.println(ANSI_BLUE + message + ANSI_RESET);
+                break;
             default:
                 // affichage standard soit blanc + message + reset
                 System.out.println(ANSI_WHITE + message + ANSI_RESET);

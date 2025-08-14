@@ -1,6 +1,8 @@
 package mmorpg.controler;
 
+import com.sun.jdi.event.MonitorWaitEvent;
 import mmorpg.model.*;
+import mmorpg.vue.InputAndDisplay;
 import mmorpg.vue.actionDisplay;
 
 import java.util.HashMap;
@@ -27,7 +29,7 @@ public class Mmorpg {
 
         Person p1 = new Person("john", 1, 100, "thief","elfe");*/
         initWord();
-        actionDisplay.displayNewPerson();
+        displayNewPerson();
         //seize data person
         //displayCreatePerson();
         //createPerson();
@@ -46,20 +48,23 @@ public class Mmorpg {
         String controlName;
         Race controlRace;
 
-
         //permit add init manuel
-        if (actionDisplay.getRace() == null) {
-            controlRace = controlRaceAuto; }
-        else { controlRace = actionDisplay.getRace(); }
+        if (actionDisplay.getRaceInput() == null) {
+            controlRace = controlRaceAuto;}
+        else {
+            //displayCreatePerson();
+            controlRace = Race.raceMap.get(actionDisplay.getRaceInput());}
 
-        if (actionDisplay.getClasses() == null) {
+        if (actionDisplay.getClassInput() == null) {
             controlClasses = autoClasses; }
-        else { controlClasses = actionDisplay.getClasses(); }
+        else {
+            //displayCreatePerson();
+            controlClasses = Classes.classes.get(actionDisplay.getClassInput());
+        }
 
         if (actionDisplay.getName() == null) {
             controlName= autoName; }
-        else { controlName = actionDisplay.getName(); }
-
+        else { controlName = getName(); }
 
 
             switch (controlRace.toString()){
@@ -96,32 +101,29 @@ public class Mmorpg {
         Healer.getListHealer().add(h1);
         Person.getListPerson().add(h1);;
     }
-
     public static void createGroup(String groupName,String person1, String person2, String person3) {
         if (Person.getListPerson().size() >= 3){
             Group g1 = new Group(groupName,person1,person2,person3);
         }
-        actionDisplay.displayPersonsGroup(groupName);
-        actionDisplay.displayListGroup();
-        actionDisplay.displayListPerson();
+        displayPersonsGroup(groupName);
+        displayListGroup();
+        displayListPerson();
     }
+    private static void initWord(){
+        InputAndDisplay.message("[INFO] Initializing Word",5);
+        InputAndDisplay.message("[INFO] Initializing Person Type",5);
+        InputAndDisplay.message("[INFO] Initializing Classes Type",5);
+        InputAndDisplay.message("[INFO] Initializing Race Type",5);
 
-    private static void initWord() {
         createListWarrior();
 
         Race thief = new Race("thief");
         Race warrior = new Race("warrior");
         Race healer = new Race("healer");
-        Race.getRace().put("thief",thief);
-        Race.getRace().put("warrior",warrior);
-        Race.getRace().put("healer",healer);
 
         Classes gnome = new Classes("gnome");
         Classes humain = new Classes("humain");
         Classes elfe = new Classes("elfe");
-        Classes.getClasses().put("gnome",gnome);
-        Classes.getClasses().put("humain",humain);
-        Classes.getClasses().put("elfe",elfe);
 
 
         createPerson("john",healer,elfe);

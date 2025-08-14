@@ -1,29 +1,37 @@
 package mmorpg.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Classes {
     private String name;
     private String weapon;
     private String armor;
-    private static Map<String, Classes> classes = new HashMap<>();
+    public static Map<String, Classes> classes = new HashMap<>();
+    private static String classGet;
 
-    public Classes (String name){
+    public static List<Classes> listClasses = new ArrayList<>();
+
+    public Classes(String name) {
         this.setName(name);
         this.weapon = weapon();
         this.armor = armor();
+        Classes.classes.put(name, this);
+        listClasses.add(this);
     }
-    public Classes (String name, String weapon, String armor) {
+
+    public Classes(String name, String weapon, String armor) {
         this.setName(name);
         this.setWeapon(weapon);
         this.setArmor(armor);
     }
 
-    private String weapon(){
+    private String weapon() {
         if (this.getName().equals("thief")) {
             return this.weapon = "dagger";
-        } else if(this.getName().equals("warrior")){
+        } else if (this.getName().equals("warrior")) {
             return this.weapon = "sword";
         } else if (this.getName().equals("healer")) {
             return this.weapon = "stick";
@@ -31,10 +39,10 @@ public class Classes {
         return this.weapon;
     }
 
-    private String armor(){
+    private String armor() {
         if (this.getName().equals("thief")) {
             return this.armor = "leather";
-        } else if (this.getName().equals("warrior")){
+        } else if (this.getName().equals("warrior")) {
             return this.armor = "steel";
         } else if (this.getName().equals("healer")) {
             return this.armor = "fabric";
@@ -42,9 +50,9 @@ public class Classes {
         return this.armor;
     }
 
-    public static Map<String, Classes> getClasses() {
-        return classes;}
-
+    public static Classes getClasses() {
+        return classes.get(classGet);
+    }
 
     public String getName() {
         return name;
