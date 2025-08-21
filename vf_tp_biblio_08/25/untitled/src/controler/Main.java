@@ -1,5 +1,6 @@
 package controler;
 
+import exception.SaisieException;
 import model.Book;
 import model.Subscriber;
 import view.InputAndDisplay;
@@ -13,7 +14,7 @@ import java.util.Objects;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SaisieException {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.println("Hello and welcome!");
@@ -21,7 +22,7 @@ public class Main {
         Main.start();
     }
 
-    public static void start() {
+    public static void start() throws SaisieException {
         init();
 
         /**
@@ -36,12 +37,12 @@ public class Main {
     /**
      * Initialisation
      */
-    public static void init() {
-        Book bk1 = new Book("J.K", "Rowling", "Harry potter à l'école des Sorciers", 10, 97820751123131L,null,null);
-        Book bk2 = new Book("J.K", "Rowling", "Harry potter et la chambre de Secrets", 5, 9782075187541L,null,null);
+    public static void init() throws SaisieException {
+        Book bk1 = new Book("JK", "Rowling", "Harry potter à l'école des Sorciers", 10, 97820751123131L,null,null);
+        Book bk2 = new Book("JK", "Rowling", "Harry potter et la chambre de Secrets", 5, 97820751875415L,null,null);
         Subscriber sb1 = new Subscriber("Dupond", "Paul", LocalDateTime.now(), "dupond_paul@gmail.com");
     }
-    public static void newBook(String firstNameAuthor, String lastNameAuthor, String title, int stock, long isbn){
+    public static void newBook(String firstNameAuthor, String lastNameAuthor, String title, int stock, long isbn) throws SaisieException {
     Book bk = new Book(actionDisplay.getFirstNameAuthor(),
             actionDisplay.getLastNameAuthor(),
             actionDisplay.getTitle(),
@@ -49,14 +50,14 @@ public class Main {
             actionDisplay.getIsbn(),null,null);
     actionDisplay.displayBookList();
     }
-    public static void newBorrowingBook(long isbn){
+    public static void newBorrowingBook(long isbn) throws SaisieException {
         boolean c = false;
         actionDisplay.displaySearchBookIsbnResult(Objects.requireNonNull(SearchIsbn(isbn)));
         if (actionDisplay.displayConfirmationBorrowing()){;
             //set borrow date to return day
             Book bk = SearchIsbn(isbn);
             bk.setBorrowDateIn(LocalDate.now());
-            bk.setStock(SearchIsbn(isbn).getStock()-1);
+            bk.setStock(Objects.requireNonNull(SearchIsbn(isbn)).getStock()-1);
             Book.getListBooksBorrowed().add(bk);
             InputAndDisplay.message("Done !",5);
             InputAndDisplay.message(String.valueOf(bk.toString()+" startDay:"+bk.getBorrowDateIn()+
@@ -108,8 +109,8 @@ public class Main {
             InputAndDisplay.message("("+nb+")",3);
         }
     }
-    public static void returnBook(long isbn){
-        SearchIsbn(isbn).setStock(SearchIsbn(isbn).getStock()+1);
+    public static void returnBook(long isbn) throws SaisieException {
+        Objects.requireNonNull(SearchIsbn(isbn)).setStock(SearchIsbn(isbn).getStock()+1);
         Book.getListBooksBorrowed().remove(SearchIsbn(isbn));
         InputAndDisplay.message("Return saved !",3);
         actionDisplay.displayStockBook();

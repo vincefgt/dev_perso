@@ -1,6 +1,7 @@
 package view;
 
 import controler.Main;
+import exception.SaisieException;
 import model.Book;
 import model.Subscriber;
 import utilities.Regex;
@@ -19,10 +20,10 @@ public class actionDisplay {
     private static String firstName;
     private static String lastName;
     public static int choiceMenu;
-    public static boolean error;
+    public static boolean error = false;
     public static String paramRegex;
 
-    public static void displayMenu() {
+    public static void displayMenu() throws SaisieException {
         InputAndDisplay.message("------ MENU -----", 0);
         InputAndDisplay.message("1 - New Subscriber", 2);
         InputAndDisplay.message("2 - New Book", 4);
@@ -38,7 +39,7 @@ public class actionDisplay {
         do {
             choiceMenu = sc.nextInt();
             sc.nextLine();
-           paramRegex = "\\d{1}";
+           Regex.setParamRegex("^(\\d)$");
             if (Regex.testDigit(choiceMenu) || choiceMenu < 1 || choiceMenu > 9) {
                     InputAndDisplay.error("Please enter a valid number [1-9]");
                     error = true;
@@ -102,7 +103,7 @@ public class actionDisplay {
     /**
      * Action
      */
-    public static void displayNewBook(){
+    public static void displayNewBook() throws SaisieException {
     InputAndDisplay.message("New Book saving",4);
     InputAndDisplay.message("ENTER: TITLE - firstNameAuthor LastNameAuthor STOCK ISBN" ,4);
     String newBook = sc.nextLine().trim();
@@ -203,7 +204,7 @@ public class actionDisplay {
         //call create book
         Main.newSubscriber(getFirstName(),getLastName(),getCreationDate(),getEmail());
     }
-    public static void displayNewBorrowingBook(){
+    public static void displayNewBorrowingBook() throws SaisieException {
         paramRegex = "^(?:\\d){13}$";
         InputAndDisplay.message("Enter Isbn !", 2);
         isbn = sc.nextLong();
@@ -227,7 +228,7 @@ public class actionDisplay {
             InputAndDisplay.message(bkb.getTitle()+" Qt: "+bkb.getStock()+" ex.", 1);
         }
     }
-    public static void displayReturnBook(){
+    public static void displayReturnBook() throws SaisieException {
         InputAndDisplay.message("Enter this Isbn",1);
         isbn = sc.nextLong();
         Main.returnBook(isbn);
@@ -238,7 +239,7 @@ public class actionDisplay {
     }
     public static boolean displayConfirmationBorrowing() {
         InputAndDisplay.message("Confirm borrowing [y/n]", 0);
-        sc.nextLine();
+        //sc.nextLine();
         return sc.nextLine().equals("y");
     }
     public static void displayStateBook(){
@@ -291,6 +292,10 @@ public class actionDisplay {
     public static String getParamRegex() {
         return paramRegex;
     }
+
+    /*public static void setScanner(Scanner newScanner) {
+        sc = newScanner;
+    }*/
 }
 
 

@@ -3,23 +3,23 @@ package utilities;
 import java.util.regex.Pattern;
 
 public class Regex {
-    static String paramRegex;
+    static String paramRegex = "^(\\d)$";
 
     /**
      * String Empty or null
      */
     public static boolean testEmptyBlank(String input) {
-        return !input.isBlank() || input.isEmpty();
+        return input.isBlank();
     }
 
     /**
-     * contain x number
+     * contain only number(s)
      * value search > true
      */
-
-    private static Pattern pDigit = Pattern.compile("^(\\d)$");
+    private static Pattern pDigit = Pattern.compile(paramRegex);
     public static boolean testDigit(long input) {
-        return !pDigit.matcher(String.valueOf(input)).find(); //return true if error found
+        pDigit = Pattern.compile(paramRegex);
+        return !pDigit.matcher(String.valueOf(input).trim()).find(); //return true if error found
     }
 
     /**
@@ -41,11 +41,14 @@ public class Regex {
     }
 
     /**
-     * valid x word(s) contain only letter(char)
+     * valid 1 word contain only letter(char)
      * {x} > number word next first
      */
     private static final Pattern pChar = Pattern.compile(
-            "^[^\\W\\d_]+(?:\\s+[^\\W\\d_]+){0}$");
+            //"^(?:[\\w\\d.,()\\-_:@#&^]+)$" // w digit
+            "^(?:[a-zA-Z.,()\\-_:@#&^]+)$" // all letters +..
+            );
+            //  "^[^\\W\\d_]+(?:\\s+[^\\W\\d_]+){0}$");
     public static boolean testChar(String input) {
         return !pChar.matcher(input).find(); //= error
     }

@@ -1,8 +1,7 @@
 package model;
 
+import exception.SaisieException;
 import utilities.Regex;
-import view.InputAndDisplay;
-
 import java.time.LocalDate;
 import java.util.*;
 
@@ -13,7 +12,9 @@ public class Book extends Author {
     private LocalDate borrowDate = null;
     private LocalDate returnDate = null;
 
-    public Book(String firstNameAuthor, String lastNameAuthor, String title, int stock, long isbn, LocalDate borrowDate, LocalDate returnDate) {
+    public Book(String firstNameAuthor, String lastNameAuthor,
+                String title, int stock, long isbn, LocalDate borrowDate,
+                LocalDate returnDate) throws SaisieException {
         super(firstNameAuthor, lastNameAuthor);
         this.setTitle(title);
         this.setStock(stock);
@@ -41,30 +42,27 @@ public class Book extends Author {
         this.title = title;
     }
     public int getStock() {
-        return stock;
+        return this.stock;
     }
-    public void setStock(int stock) {
-        do{
-            String paramRegex = "^\\d{1,3}$";
-            Regex.setParamRegex(paramRegex);
-            if (Regex.testDigit(stock) || Regex.testEmptyBlank(String.valueOf(stock))){
-                InputAndDisplay.error("Invalid Stock[3 numbers max]");
-            }
-        } while (Regex.testDigit(stock));
-        this.stock = stock;
-    }
+
+    public void setStock(int stock) throws SaisieException {
+        String paramRegex = "^\\d{1,3}$";
+        Regex.setParamRegex(paramRegex);
+        if (Regex.testDigit(stock)){
+            throw new SaisieException("Invalid Stock[3 numbers max]");
+        } else {
+        this.stock = stock; }
+        }
     public long getIsbn() {
         return this.isbn;
     }
-    public void setIsbn(long isbn) {
-        do{
-        String paramRegex = "^(?:\\d){13}$";
+    public void setIsbn(long isbn) throws SaisieException {
+        String paramRegex = "^(?:\\d){14}$";
         Regex.setParamRegex(paramRegex);
-        if (Regex.testDigit(isbn) || Regex.testEmptyBlank(String.valueOf(isbn))){
-            InputAndDisplay.error("Invalid isbn[13 numbers]");
-        }
-    } while (Regex.testDigit(isbn));
-     this.isbn = isbn;
+        if (Regex.testDigit(isbn)){
+            throw new SaisieException("Invalid isbn[14 numbers]");
+        } else {
+            this.isbn = isbn;}
     }
     public LocalDate getBorrowDateIn() {
         return borrowDate;
