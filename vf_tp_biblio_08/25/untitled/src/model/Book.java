@@ -44,7 +44,6 @@ public class Book extends Author {
     public int getStock() {
         return this.stock;
     }
-
     public void setStock(int stock) throws SaisieException {
         String paramRegex = "^\\d{1,3}$";
         Regex.setParamRegex(paramRegex);

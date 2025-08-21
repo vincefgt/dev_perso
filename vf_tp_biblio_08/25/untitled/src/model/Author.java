@@ -19,7 +19,6 @@ public class Author {
     public String getFirstNameAuthor() {
         return this.firstNameAuthor;
     }
-
     public void setFirstNameAuthor(String firstNameAuthor) throws SaisieException {
         if(Regex.testChar(firstNameAuthor) || Regex.testEmptyBlank(firstNameAuthor)){
             throw new SaisieException("Enter valid firstNameAuthor[letter only]");
@@ -28,18 +27,15 @@ public class Author {
             this.firstNameAuthor = firstNameAuthor;
         }
     }
-
     public String getLastNameAuthor() {
         return this.lastNameAuthor;
     }
-
     public void setLastNameAuthor(String lastNameAuthor) throws SaisieException {
         if(Regex.testChar(lastNameAuthor)||Regex.testEmptyBlank(lastNameAuthor)){
             throw new SaisieException("Enter valid lastNameAuthor[letter only]");
         } else {
             this.lastNameAuthor = lastNameAuthor; }
     }
-
     static List<Author> listAuthors = new ArrayList<>();
 
     @Override

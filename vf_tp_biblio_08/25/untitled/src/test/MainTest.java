@@ -7,6 +7,7 @@ import org.junit.jupiter.api.*;
 import view.actionDisplay;
 
 import java.io.ByteArrayInputStream;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,5 +41,7 @@ private Book bookTest;
 
         assertNotEquals(null, bookTest.getBorrowDateIn());
         assertNotEquals(null, bookTest.getReturnDate());
+        assertEquals(LocalDate.now().plusDays(7), bookTest.getReturnDate());
+        assertEquals(LocalDate.now(), bookTest.getBorrowDateIn());
     }
 }

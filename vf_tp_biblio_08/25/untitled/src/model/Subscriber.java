@@ -20,7 +20,6 @@ public class Subscriber extends Person {
         // this.id=id;
     }
 
-
     public String getEmail() {
         return this.email;
     }
@@ -34,11 +33,9 @@ public class Subscriber extends Person {
                errorEmail = true; }
         } while (errorEmail);
     }
-
     public LocalDateTime getCreationDate() {
         return this.creationDate;
     }
-
     public void setCreationDate(LocalDateTime creationDate) {
         do{
             if (Regex.testEmptyBlank(String.valueOf(creationDate))) {
@@ -47,11 +44,9 @@ public class Subscriber extends Person {
         } while (Regex.testEmptyBlank(String.valueOf(creationDate)));
         this.creationDate = creationDate;
     }
-
     public static List<Subscriber> getListSubscriber() {
         return listSubscriber;
     }
-
     public static void setListSubscriber(List<Subscriber> listSubscriber) {
         Subscriber.listSubscriber = listSubscriber;
     }
