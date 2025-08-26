@@ -3,8 +3,12 @@ package controler;
 import exception.SaisieException;
 import model.Book;
 import model.Subscriber;
+import view.AppBookRent;
 import view.InputAndDisplay;
 import view.actionDisplay;
+import view.AppBookRent;
+
+import javax.swing.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -20,10 +24,18 @@ public class Main {
         System.out.println("Hello and welcome!");
         Main main = new Main();
         Main.start();
+
+
     }
 
-    public static void start() throws SaisieException {
+    public static void start() throws SaisieException{
         init();
+        //actionDisplay.displayListAuthors();
+
+        SwingUtilities.invokeLater(()->{
+                    AppBookRent appBookRent = new AppBookRent();
+                    appBookRent.setVisible(true);
+        });
 
         /**
          * boucle de recurrence Menu

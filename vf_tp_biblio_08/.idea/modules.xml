@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/vf_tp_biblio_08.iml" filepath="$PROJECT_DIR$/vf_tp_biblio_08.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Biblio.iml" filepath="$PROJECT_DIR$/Biblio.iml" />
     </modules>
   </component>
 </project>
