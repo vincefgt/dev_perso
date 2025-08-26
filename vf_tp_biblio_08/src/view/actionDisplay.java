@@ -2,6 +2,7 @@ package view;
 
 import controler.Main;
 import exception.SaisieException;
+import model.Author;
 import model.Book;
 import model.Subscriber;
 import utilities.Regex;
@@ -248,6 +249,12 @@ public class actionDisplay {
         Main.stateBook(isbn);
     }
 
+    public static void displayListAuthors(){
+        InputAndDisplay.message("Author List ("+ Author.getListAuthors().size()+")",1);
+        for  (Author authorBook : Author.getListAuthors()) {
+            InputAndDisplay.message(authorBook.getFirstNameAuthor()+" "+authorBook.getLastNameAuthor(), 1);
+        }
+    }
     /*
      * not use
      *    public static void displaySearchBook(String title){

@@ -36,7 +36,12 @@ public class Author {
         } else {
             this.lastNameAuthor = lastNameAuthor; }
     }
-    static List<Author> listAuthors = new ArrayList<>();
+
+    public static List<Author> getListAuthors() {
+        return listAuthors;
+    }
+
+    public static List<Author> listAuthors = new ArrayList<>();
 
     @Override
     public String toString() {
