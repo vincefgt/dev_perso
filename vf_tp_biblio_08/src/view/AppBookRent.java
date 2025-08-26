@@ -1,5 +1,6 @@
 package view;
 
+import exception.SaisieException;
 import model.Author;
 import model.Book;
 import model.Subscriber;
@@ -41,7 +42,10 @@ public class AppBookRent extends JFrame {
     private JEditorPane textIsbn;
     private JTextField inputIsbn;
     private JTextPane textFirstName;
-    private JTextField textField1;
+    private JTextField inputFirstName;
+    private JTextPane textLastName;
+    private JTextField inputLastName;
+    private JButton buttonNewBook;
     private String titleBorder;
 
     private final String[] AttAuthor = new String[]{"FirstName", "LastName"};
@@ -75,6 +79,14 @@ public class AppBookRent extends JFrame {
 
         this.bookPane.setVisible(true); // setup by default
 
+        /**
+         * Listener
+         * author
+         * sub
+         * book
+         * newbook
+         * borrow
+         */
         AUTHORButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){actionAuthorButton();}
@@ -90,6 +102,17 @@ public class AppBookRent extends JFrame {
         BORROWButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){actionBorrowButton();}
+        });
+        buttonNewBook.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed (ActionEvent e){
+                try {
+                    actionNewBookButton();
+                    InputAndDisplay.message("Done!",3);
+                } catch (SaisieException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
         });
     }
 
@@ -170,6 +193,15 @@ public class AppBookRent extends JFrame {
         this.scrollListSub.setVisible(true);
         this.contentPane.revalidate();
     }
+    private void actionNewBookButton() throws SaisieException {
+        Book bk = new Book(inputFirstName.getText(),
+                inputLastName.getText(),
+                inputTitle.getText(),
+                Integer.parseInt(inputStock.getText()),
+                Long.parseLong(inputIsbn.getText()),
+                null,null);
+        contentPane.revalidate();
+    }
 
     /**
      * param extra
@@ -182,11 +214,12 @@ public class AppBookRent extends JFrame {
     }
     public Border setupBorderScroll(String titleBorder) {
         TitledBorder border = BorderFactory.createTitledBorder(titleBorder);
-        border.setBorder(BorderFactory.createEmptyBorder());
+        //border.setBorder(BorderFactory.createEmptyBorder());
         border.setTitleJustification(TitledBorder.LEFT);
         border.setTitlePosition(TitledBorder.TOP);
         border.setTitleFont(new Font("", Font.BOLD, 16));
         border.setTitleColor(new Color(229, 195, 183));
+        border.setBorder(BorderFactory.createLineBorder(new Color(229, 195, 183)));
         return border;
     }
 
