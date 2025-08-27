@@ -24,14 +24,11 @@ public class Main {
         System.out.println("Hello and welcome!");
         Main main = new Main();
         Main.start();
-
-
     }
 
     public static void start() throws SaisieException{
         init();
         //actionDisplay.displayListAuthors();
-
         SwingUtilities.invokeLater(()->{
                     AppBookRent appBookRent = new AppBookRent();
                     appBookRent.setVisible(true);

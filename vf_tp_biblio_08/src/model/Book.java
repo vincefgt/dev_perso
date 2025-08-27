@@ -91,7 +91,7 @@ public class Book extends Author {
 
     @Override
     public String toString() {
-        return "Book{ " + title +" } Author{ "+super.toString()+" }";
+        return "Book{ " + getTitle() +" } Author{ "+super.toString()+" } ISBN{ "+getIsbn()+" }";
     }
 
 }

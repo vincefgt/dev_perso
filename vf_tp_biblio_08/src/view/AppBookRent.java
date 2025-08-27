@@ -15,12 +15,11 @@ import java.awt.event.ActionListener;
 public class AppBookRent extends JFrame {
 
     private JPanel contentPane;
-    private JPanel Lists;
     private JPanel menu;
     private JLabel title;
     private JScrollPane scrollListBook;
     private JPanel titleFrame;
-    private JList<String> listBook;
+    private JList<Book> listBook;
     private JButton BOOKButton;
     private JButton SUBButton;
     private JButton AUTHORButton;
@@ -32,27 +31,34 @@ public class AppBookRent extends JFrame {
     private JTextArea byVinceFgtTextArea;
     private JTextArea v100TextArea;
     private JScrollPane scrollListBorrow;
-    private JList listBorrow;
+    private JList<String> listBorrow;
     private JTextField inputTitle;
     private JPanel bookPane;
     private JTextPane textTitle;
     private JPanel inputBook;
     private JTextPane textStock;
     private JTextField inputStock;
-    private JEditorPane textIsbn;
+    private JTextPane textIsbn;
     private JTextField inputIsbn;
     private JTextPane textFirstName;
     private JTextField inputFirstName;
     private JTextPane textLastName;
     private JTextField inputLastName;
     private JButton buttonNewBook;
+    private JPanel crud;
+    private JButton MODIFIEDButton;
+    private JButton DELETEButton;
+    private JButton SEARCHButton;
+    private JPanel lists;
+    private JPanel mainBody;
     private String titleBorder;
-
+    private DefaultListModel<Book> modelBook;
+    private DefaultListModel<?> modelDefault;
     private final String[] AttAuthor = new String[]{"FirstName", "LastName"};
 
     //Constructor
     public AppBookRent() {
-        Dimension dimension = new Dimension(1000, 600);
+        Dimension dimension = new Dimension(1200, 700);
 
         this.setTitle("BOOKRENT");
         /**
@@ -76,7 +82,6 @@ public class AppBookRent extends JFrame {
         DataListBooks();
         DataListSubscribers();
         DataListBorrow();
-
         this.bookPane.setVisible(true); // setup by default
 
         /**
@@ -108,11 +113,22 @@ public class AppBookRent extends JFrame {
             public void actionPerformed (ActionEvent e){
                 try {
                     actionNewBookButton();
-                    InputAndDisplay.message("Done!",3);
                 } catch (SaisieException ex) {
                     throw new RuntimeException(ex);
                 }
             }
+        });
+        DELETEButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed (ActionEvent e){actionDeleteButton();}
+        });
+        MODIFIEDButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed (ActionEvent e){actionModifiedButton();}
+        });
+        SEARCHButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed (ActionEvent e){actionSearchButton();}
         });
     }
 
@@ -139,21 +155,16 @@ public class AppBookRent extends JFrame {
         }
         this.listBorrow.setModel(modelBorrow);
 
-        if (modelBorrow.isEmpty()){
-            titleBorder = "(empty)";
-        } else {
-            titleBorder = "(" + modelBorrow.size() + ")"; }
         this.scrollListBorrow.setBorder(setupBorderScroll(titleBorder));
     }
     public void DataListBooks() {
-        DefaultListModel<String> modelBook = new DefaultListModel<>();
+        modelBook = new DefaultListModel<Book>();
         for (Book bk : Book.getListBooks()) {
-            modelBook.addElement(bk.toString()+" / "+bk.getStock());
+            modelBook.addElement(bk);
         }
         this.listBook.setModel(modelBook);
-        String titleBorder = "(" + modelBook.size() + ")";
-        this.scrollListBook.setBorder(setupBorderScroll(titleBorder));
-
+        modelDefault = modelBook;
+        titleCountItem(modelDefault);
     }
     public void DataListSubscribers() {
         DefaultListModel<String> modelSub = new DefaultListModel<>();
@@ -194,13 +205,48 @@ public class AppBookRent extends JFrame {
         this.contentPane.revalidate();
     }
     private void actionNewBookButton() throws SaisieException {
-        Book bk = new Book(inputFirstName.getText(),
+        Book nbk = new Book(inputFirstName.getText(),
                 inputLastName.getText(),
                 inputTitle.getText(),
                 Integer.parseInt(inputStock.getText()),
                 Long.parseLong(inputIsbn.getText()),
                 null,null);
+        modelBook.addElement(nbk);
+        for (Component c : inputBook.getComponents()) {
+            if (c instanceof JTextField) {
+                ((JTextField) c).setText("");
+            }
+        }
+        //DataListBooks();
         contentPane.revalidate();
+    }
+    private void actionModifiedButton(){
+
+    }
+    private void actionDeleteButton(){
+        // tableau qui contient toutes tes JList
+        JList<?>[] allLists = { listBook, listAuthor, listSub };
+
+        for (JList<?> currentList : allLists) {
+            int selectedIndex = currentList.getSelectedIndex();
+            if (selectedIndex != -1) {  // if at least one item selected
+                DefaultListModel<?> model = (DefaultListModel<?>) currentList.getModel();
+                DialogFrame.confirmButton("ARE YOU SURE?",true,true);
+                if (DialogFrame.getResult()) {
+                    model.remove(currentList.getSelectedIndex());
+                    titleCountItem(model);
+                    currentList.clearSelection();
+                } else { currentList.clearSelection();}
+            } else {
+            DialogFrame.confirmButton("PLEASE SELECT ANY ITEM!",false,false);
+            }
+        //currentList.clearSelection();
+        break;
+        }
+        contentPane.revalidate();
+    }
+    private void actionSearchButton(){
+
     }
 
     /**
@@ -221,6 +267,13 @@ public class AppBookRent extends JFrame {
         border.setTitleColor(new Color(229, 195, 183));
         border.setBorder(BorderFactory.createLineBorder(new Color(229, 195, 183)));
         return border;
+    }
+    public void titleCountItem(DefaultListModel<?> modelDefault){
+        if (modelDefault.isEmpty()){
+            titleBorder = "(empty)";
+        } else {
+            titleBorder = "(" + modelDefault.size() + ")"; }
+        this.scrollListBook.setBorder(setupBorderScroll(this.titleBorder));
     }
 
 }
