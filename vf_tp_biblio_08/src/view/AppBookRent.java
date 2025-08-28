@@ -51,6 +51,7 @@ public class AppBookRent extends JFrame {
     private JButton SEARCHButton;
     private JPanel lists;
     private JPanel mainBody;
+    private JButton BORROWINGButton;
     private String titleBorder;
     private DefaultListModel<Book> modelBook;
     private DefaultListModel<?> modelDefault;
@@ -130,6 +131,10 @@ public class AppBookRent extends JFrame {
             @Override
             public void actionPerformed (ActionEvent e){actionSearchButton();}
         });
+        BORROWINGButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed (ActionEvent e){actionBorrowingButton();}
+        });
     }
 
     /**
@@ -202,6 +207,7 @@ public class AppBookRent extends JFrame {
     private void actionSubButton(){
         allListHide();
         this.scrollListSub.setVisible(true);
+        this.BORROWINGButton.setVisible(false); //hide borrow
         this.contentPane.revalidate();
     }
     private void actionNewBookButton() throws SaisieException {
@@ -221,7 +227,26 @@ public class AppBookRent extends JFrame {
         contentPane.revalidate();
     }
     private void actionModifiedButton(){
+        // tableau qui contient toutes tes JList
+        JList<?>[] allLists = { listBook, listAuthor, listSub };
 
+        for (JList<?> currentList : allLists) {
+            int selectedIndex = currentList.getSelectedIndex();
+            if (selectedIndex != -1) {  // if at least one item selected
+                DefaultListModel<?> model = (DefaultListModel<?>) currentList.getModel();
+                //DialogFrame.confirmButton("ARE YOU SURE?",true,true);
+                if (DialogFrame.getResult()) {
+                    //model.remove(currentList.getSelectedIndex());
+                    // TODO: open new windows w data book
+                    // TODO: get new data > save data to book
+                    currentList.clearSelection();
+                } else { currentList.clearSelection();}
+            } else {
+                DialogFrame.confirmButton("PLEASE SELECT ANY ITEM!",false,false);
+            }
+            break;
+        }
+        contentPane.revalidate();
     }
     private void actionDeleteButton(){
         // tableau qui contient toutes tes JList
@@ -240,13 +265,31 @@ public class AppBookRent extends JFrame {
             } else {
             DialogFrame.confirmButton("PLEASE SELECT ANY ITEM!",false,false);
             }
-        //currentList.clearSelection();
         break;
         }
         contentPane.revalidate();
     }
-    private void actionSearchButton(){
+    private void actionSearchButton(){}
+    private void actionBorrowingButton(){
+        // tableau qui contient toutes tes JList
+        JList<?>[] allLists = { listBook, listAuthor };
 
+        for (JList<?> currentList : allLists) {
+            int selectedIndex = currentList.getSelectedIndex();
+            if (selectedIndex != -1) {  // if at least one item selected
+                DefaultListModel<?> model = (DefaultListModel<?>) currentList.getModel();
+                //DialogFrame.confirmButton("ARE YOU SURE?",true,true);
+                if (DialogFrame.getResult()) {
+                    //model.remove(currentList.getSelectedIndex());
+                    // TODO:
+                    currentList.clearSelection();
+                } else { currentList.clearSelection();}
+            } else {
+                DialogFrame.confirmButton("PLEASE SELECT ANY ITEM!",false,false);
+            }
+            break;
+        }
+        contentPane.revalidate();
     }
 
     /**
@@ -276,4 +319,7 @@ public class AppBookRent extends JFrame {
         this.scrollListBook.setBorder(setupBorderScroll(this.titleBorder));
     }
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }

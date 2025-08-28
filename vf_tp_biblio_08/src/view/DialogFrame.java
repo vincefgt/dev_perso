@@ -61,10 +61,10 @@ public class DialogFrame extends JDialog {
     public static boolean getResult() {
         return Result;
     }
-    public static void confirmButton(String pTextLabel,boolean bCancel,boolean bOK) {
-        DialogFrame dialog = new DialogFrame(pTextLabel,bCancel,bOK);
+    public static void confirmButton(String pTextLabel,boolean bCancel,boolean bOk) {
+        DialogFrame dialog = new DialogFrame(pTextLabel);
         dialog.buttonCancel.setVisible(bCancel);
-        dialog.buttonOk.setVisible(bOk);
+        dialog.buttonOK.setVisible(bOk);
         dialog.pack();
         dialog.setVisible(true);
        // System.exit(0);
